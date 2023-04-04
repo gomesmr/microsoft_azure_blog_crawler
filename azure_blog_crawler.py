@@ -1,3 +1,4 @@
+import os
 import json
 import time
 from bs4 import BeautifulSoup
@@ -5,7 +6,11 @@ from requests_html import HTMLSession
 
 
 def save_file_page_data(data, first_page, num_pages):
-    file_name = f"json_output/microsoft_blog_pg_{first_page:04}_a_{first_page + num_pages - 1:04}.json"
+    output_dir = "json_output"
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    file_name = f"{output_dir}/microsoft_blog_pg_{first_page:04}_a_{first_page + num_pages - 1:04}.json"
     with open(file_name, "w", encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
@@ -21,8 +26,6 @@ class AzureBlogCrawler:
         self.blog_url = f"{self.base_url}pt-br/blog/?Page="
         self.html_session = HTMLSession()
         self.blog_response_data = {"articles": {}}
-
-
 
     def crawl_multiple_batches(self):
         for page in range(0, self.batches, self.pages_per_batch):
