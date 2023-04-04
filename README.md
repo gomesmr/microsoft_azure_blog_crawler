@@ -1,18 +1,19 @@
 # azure_blog_microsoft_crawler
 
-Clonar este repo
+Clone this repo
 ```lua
 git clone https://github.com/gomesmr/azure_blog_microsoft_crawler
 ```
-Instale os recursos necessários
+Install the necessary features
 ```lua
 pip install -r requirements.txt
 ```
 
-Rode o script clicando no botão **"play"** no arquivo **"main.py"**
+Run the script by clicking the **"play"**  button in the file **"main.py"**
 
-O Script possui três variáveis básicas
+The Script has three basic variables
 
-    `begin_process_on_page`: Refere-se à página no Blog da Microsoft que será considerada como a primeira do ciclo de raspagem
-    `batches`: Quantos ciclos serão iterados
-    `pages_per_batch`: Quantas páginas serão raspadas em cada ciclo
+`begin_process_on_page`: Refers to the page on the Microsoft Blog that will be considered as the first of the scraping cycle
+`batches`: How many cycles to iterate
+`pages_per_batch`: How many pages will be scraped in each cycle
+
