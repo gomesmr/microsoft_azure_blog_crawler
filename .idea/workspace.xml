@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55dec3dc-4e96-4f16-8247-59b84aa3a995" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/azure_blog_crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/azure_blog_crawler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="55dec3dc-4e96-4f16-8247-59b84aa3a995" name="Changes" comment="Versão 1.0.0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,9 +66,21 @@
       <option name="presentableId" value="Default" />
       <updated>1680291486530</updated>
     </task>
+    <task id="LOCAL-00001" summary="Versão 1.0.0">
+      <created>1680625902422</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625902422</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Versão 1.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Versão 1.0.0" />
   </component>
 </project>
