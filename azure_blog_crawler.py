@@ -5,12 +5,12 @@ from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 
 
-def save_file_page_data(data, first_page, num_pages):
+def save_file_page_data(data, first_page, last_page):
     output_dir = "json_output"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    file_name = f"{output_dir}/microsoft_blog_pg_{first_page:04}_a_{first_page + num_pages - 1:04}.json"
+    file_name = f"{output_dir}/microsoft_blog_pg_{first_page:04}_a_{first_page + last_page -1:04}.json"
     with open(file_name, "w", encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
@@ -22,39 +22,45 @@ class AzureBlogCrawler:
         self.batches = batches
         self.pages_per_batch = pages_per_batch
         self.delay_between_batches = delay_between_batches
-        self.base_url = "https://azure.microsoft.com/"
-        self.blog_url = f"{self.base_url}pt-br/blog/?Page="
+        self.last_page_batched = self.begin_process_page
+        self.page_to_bach = None
+        self.base_url = "https://azure.microsoft.com"
+        self.blog_url = f"{self.base_url}/pt-br/blog/?Page="
         self.html_session = HTMLSession()
-        self.blog_response_data = {"articles": {}}
+        self.batch_data = {}
 
     def crawl_multiple_batches(self):
-        for page in range(0, self.batches, self.pages_per_batch):
-            print(f"Starting crawling at page {self.begin_process_page + page}")
-            self.crawl_blog(page + 1)
-            if page + self.pages_per_batch < self.batches:
-                print(f"Waiting {self.delay_between_batches} seconds before the next batch")
-                time.sleep(self.delay_between_batches)
+        for batch_cycle in range(0, self.batches):
+            self.page_to_bach = self.last_page_batched
+            self.parse_and_save_batch_pages(self.page_to_bach)
+            self.last_page_batched = self.page_to_bach + self.pages_per_batch
 
         print("Crawling finished")
 
-    def crawl_blog(self, first_page):
+    def parse_and_save_batch_pages(self, first_page):
+        self.batch_data = {"articles": {}}
+        page_to_craw = first_page
+        for page in range(0, self.pages_per_batch):
+            page_to_craw = page + page_to_craw
+            print(f"Starting crawling at page {page_to_craw}")
+            self.crawl_blog(page_to_craw)
+
+    def crawl_blog(self, page_to_craw):
         start_time = time.time()
-        self.parse_blog_pages(first_page, self.pages_per_batch)
+        self.parse_blog_pages(page_to_craw)
         end_time = time.time()
         print("Duration of process {:.3f}s".format(end_time - start_time))
-        save_file_page_data(self.blog_response_data, self.begin_process_page, self.pages_per_batch)
 
     def get_url_content(self, url):
         return self.html_session.get(url)
 
-    def parse_blog_pages(self, first_page, num_pages):
-        for page_num in range(self.begin_process_page + first_page - 1,
-                              self.begin_process_page + first_page + num_pages - 1):
-            page_response = self.get_url_content(self.blog_url + str(page_num))
-            soup = BeautifulSoup(page_response.content, 'html5lib')
-            articles = soup.find_all("article", class_="blog-postItem")
-            self.parse_articles(articles, page_num)
-            print(f'Page {page_num} OK!')
+    def parse_blog_pages(self, page_to_craw):
+        page_response = self.get_url_content(self.blog_url + str(page_to_craw))
+        soup = BeautifulSoup(page_response.content, 'html5lib')
+        articles = soup.find_all("article", class_="blog-postItem")
+        self.parse_articles(articles, page_to_craw)
+        save_file_page_data(self.batch_data, self.page_to_bach, self.pages_per_batch)
+        print(f'Page {page_to_craw} OK!')
 
     def parse_articles(self, articles, page_num):
         for count, article in enumerate(articles[3:]):
@@ -74,8 +80,12 @@ class AzureBlogCrawler:
             position = position_element.text.strip() if position_element is not None else ""
             position_list = [p.strip() for p in position.split(',')]
             tags_section = article_soup.find('div', {'class': 'blog-topicLabels'})
-            tags_list = [tag.text for tag in tags_section.find_all('a', {'class': 'blog-topicLabel text-body5'})]
-            self.blog_response_data["articles"][f"page_{page_num}_art_{count + 1}"] = {
+            if tags_section is not None:
+                tags_list = [tag.text for tag in tags_section.find_all('a', {'class': 'blog-topicLabel text-body5'})]
+            else:
+                tags_list = []
+
+            self.batch_data["articles"][f"page_{page_num}_art_{count + 1}"] = {
                 "title": title,
                 "date": date_published,
                 "summary": summary,

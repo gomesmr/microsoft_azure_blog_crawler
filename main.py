@@ -2,7 +2,7 @@ from azure_blog_crawler import AzureBlogCrawler
 
 
 def main():
-    begin_process_on_page = 1
+    begin_process_on_page = 432
     batches = 1
     pages_per_batch = 1
 
