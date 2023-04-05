@@ -5,16 +5,6 @@ from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 
 
-def save_file_page_data(data, first_page, last_page):
-    output_dir = "json_output"
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    file_name = f"{output_dir}/microsoft_blog_pg_{first_page:04}_a_{first_page + last_page -1:04}.json"
-    with open(file_name, "w", encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-
-
 class AzureBlogCrawler:
 
     def __init__(self, first_page, batches, pages_per_batch, delay_between_batches=2):
@@ -23,27 +13,37 @@ class AzureBlogCrawler:
         self.pages_per_batch = pages_per_batch
         self.delay_between_batches = delay_between_batches
         self.last_page_batched = self.begin_process_page
-        self.page_to_bach = None
+        self.page_to_batch = None
         self.base_url = "https://azure.microsoft.com"
         self.blog_url = f"{self.base_url}/pt-br/blog/?Page="
         self.html_session = HTMLSession()
         self.batch_data = {}
 
+    def save_file_page_data(self):
+        output_dir = "json_output"
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
+        file_name = f"{output_dir}/microsoft_blog_pg_{self.page_to_batch:04}_a_" \
+                    f"{self.page_to_batch + self.pages_per_batch - 1:04}.json"
+        with open(file_name, "w", encoding='utf-8') as f:
+            json.dump(self.batch_data, f, ensure_ascii=False, indent=4)
+
     def crawl_multiple_batches(self):
-        for batch_cycle in range(0, self.batches):
-            self.page_to_bach = self.last_page_batched
-            self.parse_and_save_batch_pages(self.page_to_bach)
-            self.last_page_batched = self.page_to_bach + self.pages_per_batch
+        for _ in range(0, self.batches):
+            self.page_to_batch = self.last_page_batched
+            self.parse_and_save_batch_pages()
+            self.last_page_batched = self.page_to_batch + self.pages_per_batch
 
         print("Crawling finished")
 
-    def parse_and_save_batch_pages(self, first_page):
+    def parse_and_save_batch_pages(self):
         self.batch_data = {"articles": {}}
-        page_to_craw = first_page
-        for page in range(0, self.pages_per_batch):
-            page_to_craw = page + page_to_craw
-            print(f"Starting crawling at page {page_to_craw}")
-            self.crawl_blog(page_to_craw)
+        page_to_crawl = self.page_to_batch
+        for _ in range(0, self.pages_per_batch):
+            print(f"Starting crawling at page {page_to_crawl}")
+            self.crawl_blog(page_to_crawl)
+            page_to_crawl = page_to_crawl + 1
 
     def crawl_blog(self, page_to_craw):
         start_time = time.time()
@@ -59,7 +59,7 @@ class AzureBlogCrawler:
         soup = BeautifulSoup(page_response.content, 'html5lib')
         articles = soup.find_all("article", class_="blog-postItem")
         self.parse_articles(articles, page_to_craw)
-        save_file_page_data(self.batch_data, self.page_to_bach, self.pages_per_batch)
+        self.save_file_page_data()
         print(f'Page {page_to_craw} OK!')
 
     def parse_articles(self, articles, page_num):
