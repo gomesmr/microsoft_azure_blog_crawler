@@ -1,4 +1,4 @@
-# azure_blog_microsoft_crawler
+# microsoft_azure_blog_crawler
 
 Clone this repo
 ```lua
