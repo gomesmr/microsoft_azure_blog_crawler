@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55dec3dc-4e96-4f16-8247-59b84aa3a995" name="Changes" comment="Refatoração 01">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/azure_blog_crawler/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/azure_blog_crawler/crawler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/azure_blog_crawler/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_crawler.py" afterDir="false" />
+    <list default="true" id="55dec3dc-4e96-4f16-8247-59b84aa3a995" name="Changes" comment="Nova estrutura de pastas">
+      <change afterPath="$PROJECT_DIR$/tests/stubs/article_content_blog_azure.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/stubs/article_highlights_blog_azure.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/stubs/page_3_blog_azure.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/azure_blog_crawler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/azure_blog_crawler/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/azure_blog_crawler/crawler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,21 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Marcelo.Gomes/PycharmProjects/azure_blog_microsoft_crawler/azure_blog_crawler/utils.py",
-    "settings.editor.selected.configurable": "terminal"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marcelo.Gomes/PycharmProjects/azure_blog_microsoft_crawler&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Marcelo.Gomes\PycharmProjects\azure_blog_microsoft_crawler" />
+      <recent name="C:\Users\Marcelo.Gomes\PycharmProjects\azure_blog_microsoft_crawler\tests\stubs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Marcelo.Gomes\PycharmProjects\azure_blog_microsoft_crawler\azure_blog_crawler" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Python tests for test_utils.TestUtils">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="blog_microsoft" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,6 +96,85 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_utils.TestUtils" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="blog_microsoft" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_utils.TestUtils&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_utils.TestUtils.test_should_add_article_to_batch_data_correctly" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="blog_microsoft" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_utils.TestUtils.test_should_add_article_to_batch_data_correctly&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_utils.TestUtils.test_should_get_articles_from_soup" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="blog_microsoft" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_utils.TestUtils.test_should_get_articles_from_soup&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_utils.TestUtils.test_should_process_article_content_correctly" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="blog_microsoft" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_utils.TestUtils.test_should_process_article_content_correctly&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_utils.test_should_create_output_folder_if_it_doesnt_exists" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="blog_microsoft" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_utils.test_should_create_output_folder_if_it_doesnt_exists&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_utils.TestUtils" />
+        <item itemvalue="Python tests.Python tests for test_utils.TestUtils.test_should_add_article_to_batch_data_correctly" />
+        <item itemvalue="Python tests.Python tests for test_utils.TestUtils.test_should_process_article_content_correctly" />
+        <item itemvalue="Python tests.Python tests for test_utils.TestUtils.test_should_get_articles_from_soup" />
+        <item itemvalue="Python tests.Python tests for test_utils.test_should_create_output_folder_if_it_doesnt_exists" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -138,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680659684013</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Nova estrutura de pastas">
+      <created>1681058413752</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681058413752</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -159,6 +248,7 @@
     <MESSAGE value="Versão 1.0.0" />
     <MESSAGE value="Versão 1.1.0" />
     <MESSAGE value="Refatoração 01" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração 01" />
+    <MESSAGE value="Nova estrutura de pastas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nova estrutura de pastas" />
   </component>
 </project>

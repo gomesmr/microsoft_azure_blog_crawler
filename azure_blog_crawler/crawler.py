@@ -89,7 +89,7 @@ class AzureBlogCrawler:
 
     def save_file_page_data(self, first_page_in_batch, batch_data):
         """Save batch data to a JSON file."""
-        output_dir = "../json_output"
+        output_dir = "json_output"
         create_output_directory(output_dir)
         last_page_in_batch = first_page_in_batch + self.pages_per_batch - 1
         file_name = f"{output_dir}/microsoft_blog_pg_{first_page_in_batch:04}_a_" \
