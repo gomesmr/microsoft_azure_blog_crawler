@@ -1,0 +1,53 @@
+# .gitignore
+
+# Arquivos e diretórios do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos e diretórios do ambiente virtual (venv)
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Diretório de saída dos dados
+json_output/
+
+# Arquivos e diretórios do PyCharm
+.idea
+.idea/*
+*.iml
+
+# Arquivos e diretórios do Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Outros arquivos temporários e caches
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+*.pid
+.cache/
+dist/
+build/
+*.egg-info/
+*.eggs/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt

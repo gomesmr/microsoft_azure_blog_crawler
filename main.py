@@ -1,11 +1,9 @@
-from azure_blog_crawler import AzureBlogCrawler
-
+from azure_blog_crawler.crawler import AzureBlogCrawler
 
 if __name__ == "__main__":
-    first_page = 1
-    batches = 2
-    pages_per_batch = 3
-    delay_between_batches = 2
+    first_page = 3
+    batches = 1
+    pages_per_batch = 1
 
-    with AzureBlogCrawler(first_page, batches, pages_per_batch, delay_between_batches) as crawler:
+    with AzureBlogCrawler(first_page, batches, pages_per_batch) as crawler:
         crawler.crawl_multiple_batches()
