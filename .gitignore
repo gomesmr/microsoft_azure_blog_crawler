@@ -15,7 +15,8 @@ __pycache__/
 json_output/
 
 # Arquivos e diretórios do PyCharm
-.idea/
+.idea
+.idea/*
 *.iml
 
 # Arquivos e diretórios do Jupyter Notebook

@@ -5,6 +5,8 @@ from requests.exceptions import RequestException
 from .utils import create_output_directory, write_json_file, get_articles_from_soup, process_article_content, \
     add_article_to_batch_data
 
+JSON_OUTPUT_DIR = "json_output"
+
 
 class AzureBlogCrawler:
     """Crawler class for the Azure Blog."""
@@ -29,13 +31,13 @@ class AzureBlogCrawler:
         """Crawl multiple batches of blog pages."""
         for _ in range(0, self.batches):
             page_to_batch = self.last_page_batched
-            self.parse_and_save_batch_pages(page_to_batch)
+            self.crawl_parse_and_save_batch_pages(page_to_batch)
             self.last_page_batched = page_to_batch + self.pages_per_batch
 
         print("Crawling finished")
 
-    def parse_and_save_batch_pages(self, page_to_batch):
-        """Parse and save a batch of blog pages."""
+    def crawl_parse_and_save_batch_pages(self, page_to_batch):
+        """Crawl, parse and save a batch of blog pages."""
         batch_data = {"articles": {}}
         page_to_crawl = page_to_batch
         for _ in range(0, self.pages_per_batch):
@@ -89,7 +91,7 @@ class AzureBlogCrawler:
 
     def save_file_page_data(self, first_page_in_batch, batch_data):
         """Save batch data to a JSON file."""
-        output_dir = "json_output"
+        output_dir = JSON_OUTPUT_DIR
         create_output_directory(output_dir)
         last_page_in_batch = first_page_in_batch + self.pages_per_batch - 1
         file_name = f"{output_dir}/microsoft_blog_pg_{first_page_in_batch:04}_a_" \
